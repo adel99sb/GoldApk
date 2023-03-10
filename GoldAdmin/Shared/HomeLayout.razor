@@ -1,0 +1,69 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavMgr
+<div class="tab">
+	<button class="tablinks" @onclick=giftspage style="background-image: url(skins/gifts.png);"></button>
+	<button class="tablinks" @onclick=topratepage style="background-image: url(skins/topRate.png);"></button>
+	<button class="tablinks" @onclick=productspage style="background-image: url(skins/products.png);"></button>
+	<button class="tablinks" @onclick=pricespage style="background-image: url(skins/prices.png);"></button>
+</div>
+@Body
+<div style="background-color:none; position: fixed; left:75%; top:85%; z-index:1;">
+		<img src="skins/chat.png" alt="!" @onclick=tochatpage/>
+	</div>
+
+
+<style>
+
+	/* Style the tab */
+	.tab {
+		width:100%;
+		overflow: hidden;
+		border: 3px solid;
+		border-color:darkgoldenrod;
+	    position: fixed;
+		z-index:1;
+
+		 }
+
+		/* Style the buttons inside the tab */
+		.tab button {
+			float: left;
+			cursor: pointer;
+			transition: 0.3s;
+			width: 25%;
+			height: 40px;
+			background-size: contain;
+			background-color:black;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+			/* Change background color of buttons on hover */
+			.tab button:hover {
+				background-color: white;
+			}
+
+</style>
+
+@code {
+	private void giftspage()
+	{
+		NavMgr.NavigateTo("/gifts");
+	}
+	private void topratepage()
+	{
+		NavMgr.NavigateTo("/toprate");
+	}
+	private void productspage()
+	{
+		NavMgr.NavigateTo("/Companies");
+	}
+	private void pricespage()
+	{
+		NavMgr.NavigateTo("/prices");
+	}
+	private void tochatpage()
+	{
+		NavMgr.NavigateTo("/chat");
+	}
+}

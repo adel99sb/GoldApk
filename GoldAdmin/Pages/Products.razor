@@ -1,0 +1,76 @@
+﻿@page "/Products"
+@inject NavigationManager NavMgr
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	#catcard {
+		border: 8px;
+		width: 46%;
+		margin: 2%;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 25px;
+		float: left;
+	}
+
+	#catcardin {
+		border: 10px;
+		margin: 5%;
+		overflow: hidden;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 20px;
+		position: relative;
+	}
+
+	#name {
+		margin: 3%;
+		text-align: right;
+		color: darkgoldenrod;
+		font-size: larger;
+	}
+
+	#name1 {
+		margin: 3%;
+		text-align: center;
+		color: darkgoldenrod;
+		font-size: x-large;
+	}
+
+</style>
+<body>
+	<p id="name"><b><i>تعديل المنتجات</i></b></p>
+	<hr style="color:gold; height:3px;" />
+	<div>
+		@for (int i = 1; i < 50; i++)
+		{
+			<div id="catcard">
+				<div id="catcardin">
+					<img src="skins/product1.png" style="opacity:0.7;" />
+					<p id="name1">
+						<span style="color:white;" @onclick=ToDetailPage>تعديل</span>
+						<br>
+						<span style="color:white;">حذف</span>
+					</p>
+				</div>
+			</div>
+		}
+	</div>
+</body>
+@code {
+	private void ToDetailPage(){
+		NavMgr.NavigateTo("/Details");
+	}
+}

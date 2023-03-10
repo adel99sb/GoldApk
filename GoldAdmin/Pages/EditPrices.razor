@@ -1,0 +1,86 @@
+﻿@page "/EditPrices" 
+
+   
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	input {
+		width: 220px;
+		height: 40px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+		border: 1px solid #ffbe00;
+		background: rgba(0,0,0,1);
+		color:white;
+	}
+
+	#catcard {
+		border: 8px;
+		margin: 2%;
+		border: 1px solid;
+		border-color: gold;
+		border-radius: 25px;
+		float: left;
+	}
+
+	#mybutton {
+		width: 180px;
+		height: 50px;
+		border-radius: 50px;
+		border: 1px groove;
+		border-block-color: white;
+		background-color: darkgoldenrod;
+		color: black;
+		font-size: x-large;
+		font-style: italic;
+		margin-left:20%;
+		margin-top:20px;
+	}
+
+	#name {
+		margin: 3%;
+		text-align: right;
+		color: darkgoldenrod;
+		font-size: larger;
+	}
+</style>
+<body>
+	<div style="height:50px; width:350px;"></div>
+	<p id="name"><b><i>تعديل الأسعار</i></b></p>
+	<hr style="color:gold; height:3px;" />
+
+	<div style="margin-left:10%;">
+			<p id="name"><b><i>عيار 16</i></b></p>
+			<input type="text"/>
+			<p id="name"><b><i>عيار 18</i></b></p>
+			<input type="text"/>
+			<p id="name"><b><i>عيار 21</i></b></p>
+			<input type="text" />
+	</div>
+	<button id="mybutton">حفظ</button>
+	</body>
+@code {
+	Services myservice = new Services();
+
+	[Parameter]
+	public int id { set; get; }
+	protected override void OnInitialized()
+	{
+		
+	}
+	
+
+}

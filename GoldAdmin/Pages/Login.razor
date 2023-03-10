@@ -1,0 +1,102 @@
+﻿@page "/login"
+@layout MainLayout
+@inject NavigationManager NavMgr
+<style>
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	input {
+		width: 220px;
+		height: 40px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+		border: 1px solid #ffbe00;
+		background: rgba(0,0,0,1);
+	}
+
+	#mybutton {
+		width: 180px;
+		height: 50px;
+		border-radius: 50px;
+		border: 1px groove;
+		border-block-color: white;
+		background-color: darkgoldenrod;
+		color: black;
+		font-size: x-large;
+		font-style: italic;
+	}
+
+	#inputBorder {
+		width: 272px;
+		height: 60px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+		border: 1px solid #ffbe00;
+		background-color: none;
+		margin-top: 3%;
+		padding-top: 8px;
+		padding-left: 4px;
+	}
+</style>
+@*<head>
+<script suppress-error="BL9992">
+	function preventBack() { window.history.forward(); }
+	setTimeout("preventBack()", 0);
+	window.onunload = function () { null };</script></head>*@
+<body>
+
+	<div style="margin-left:50%; margin-top:10%; font-size:xx-large;color:white; width:200px;">تسجيل الدخول</div>
+	<div style="margin-top:30%; margin-left:12%;">
+		<div id="inputBorder">
+			<img src="skins/user.png" />
+			<input style="color:white;" @bind-value=phone/>
+		</div>
+		<div id="inputBorder">
+			<img src="skins/password.png" />
+			<input type="password" style="color:white;" @bind-value=password />
+		</div>
+	</div>
+	<div style="margin-left:25%; margin-top:15%;">
+		<button id="mybutton" @onclick=nextpage>تسجيل</button>
+	</div>
+</body>
+
+@code {
+    string phone;
+    string password;
+    private void SignUppage()
+    {
+        NavMgr.NavigateTo("/");
+    }
+    private void Verfpage()
+    {
+        NavMgr.NavigateTo("/");
+    }
+    private void nextpage()
+    {
+        try
+        {
+   //         Services services=new();
+   //         Costumer costumer= services.Login(phone, password);
+			//NavMgr.NavigateTo("/prices/" + costumer.Id);
+			NavMgr.NavigateTo("/prices/");
+        }
+        catch
+        {
+             Application.Current.MainPage.DisplayAlert("woring..", "phone nomber or password is not correct !", "ok");
+        }
+	}
+
+
+}

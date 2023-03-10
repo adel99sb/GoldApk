@@ -1,0 +1,76 @@
+﻿@page "/Verfaction"
+@layout MainLayout
+@inject NavigationManager NavMgr
+@inject IJSRuntime JS
+
+<style>
+    body {
+        font-family: 'Arabic Typesetting';
+        background: url(skins/background.png) no-repeat center fixed;
+        background-size: contain;
+        background-color: black;
+    }
+
+
+    div {
+        position: page;
+    }
+
+    input {
+        width: 220px;
+        height: 40px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        border: 1px solid #ffbe00;
+        background: rgba(0,0,0,1);
+    }
+
+    #mybutton {
+        width: 180px;
+        height: 50px;
+        border-radius: 50px;
+        border: 1px groove;
+        border-block-color: white;
+        background-color: darkgoldenrod;
+        color: black;
+        font-size: x-large;
+        font-style: italic;
+    }
+
+    #inputBorder {
+        width: 272px;
+        height: 60px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        border: 1px solid #ffbe00;
+        background-color: none;
+        margin-top: 3%;
+        padding-top: 8px;
+        padding-left: 4px;
+    }
+</style>
+
+<body>
+
+    <div style="margin-left:15%; margin-top:30%; font-size:large;color:white; width:300px;">: أدخل الرمز الذي ارسلناه لك على بريدك الإلكتروني</div>
+    <div style="margin-top:30%; margin-left:12%;">
+        <div id="inputBorder">
+            <img src="skins/conform.png" />
+            <input type="number" style="color:white;" />
+        </div>
+    </div>
+    <div style="margin-left:25%; margin-top:15%;">
+        <button id="mybutton" @onclick=signupage>تأكيد</button>
+    </div>
+</body>
+@code {
+
+    private void signupage()
+    {
+        NavMgr.NavigateTo("/prices");
+    }
+
+
+}

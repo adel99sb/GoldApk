@@ -1,0 +1,114 @@
+﻿@page "/signup"
+@layout MainLayout
+@inject NavigationManager NavMgr;
+
+<style>
+	body {
+    background: url(skins/background.png) no-repeat center fixed;
+    background-size: contain;
+    background-color: black;
+	font-family: "Open Sans", sans-serif;
+
+}
+
+
+div {
+    position: page;
+}
+
+input {
+    width: 220px;
+    height: 40px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 1px solid #ffbe00;
+    background: rgba(0,0,0,1);
+}
+
+#mybutton {
+    width: 180px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px groove;
+    border-block-color: white;
+    background-color: darkgoldenrod;
+    color: black;
+    font-size: x-large;
+    font-style: italic;
+}
+
+#inputBorder {
+    width: 272px;
+    height: 60px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 1px solid #ffbe00;
+    background-color: none;
+    margin-top: 3%;
+    padding-top: 8px;
+    padding-left: 4px;
+}
+</style>
+
+	<body>
+
+	    <div style="margin-left:50%; margin-top:6%; font-size:xx-large;color:white; width:200px;">إنشاء حساب</div>
+		<div style="margin-top:20%; margin-left:12%;">
+		<div id="inputBorder">
+				<img src="skins/user.png" />
+				<input style="color:white;" />
+			</div>
+		<div id="inputBorder">
+				<img src="skins/phone.png" />
+				<input type="password" style="color:white;" />
+			</div>
+		<div id="inputBorder">
+				<img src="skins/password.png" />
+				<input type="password" style="color:white;" />
+			</div>
+		<div id="inputBorder">
+				<img src="skins/password.png" />
+				<input type="number" style="color:white;" />
+			</div>
+									
+	  </div>
+			<div style="margin-left:25%; margin-top:15%;">
+				<button id="mybutton" @onclick=verfpage>إنشاء</button>
+			</div>
+			<div style="margin-top:10%">
+				<div style="margin-left:45%; color:white; font-size:larger">OR</div>
+				<hr style="color:white; width:250px; margin-left:15%; margin-top:2%;" />
+			</div>
+			<div style="margin-left:25%" >
+					<img src="skins/google.png" @onclick=signwithgoogle/>
+					<img src="skins/facebook.png" style="margin-left:15%;"/>
+			</div>			
+				<div style="margin-top:10%; margin-left:58%;font-size:larger;">
+					<div style="color:white;"> ! لديك حساب بالفعل</div>
+						<div style="color:darkgoldenrod;" @onclick=loginpage>قم بتسجيل الدخول</div>
+										 
+				</div>
+@*				<MudAlert Severity="Severity.Success" Variant="Variant.Filled">The reactor is running at optimum temperature</MudAlert>
+*@
+	</body>
+  
+@code{
+	public int elevation = 0;
+
+	private void loginpage()
+	{
+		NavMgr.NavigateTo("/login");
+	}
+	private void verfpage()
+	{
+
+		NavMgr.NavigateTo("/details");
+	}
+
+	public void signwithgoogle()
+	{
+	
+	}
+}

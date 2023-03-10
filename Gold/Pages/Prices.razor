@@ -1,0 +1,64 @@
+﻿@page "/prices"
+@layout HomeLayout
+@inject NavigationManager NavMgr
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	#catcard {
+		border: 8px;
+		width: 29%;
+		margin: 2%;
+		border: 1px solid;
+		border-color: gold;
+		border-radius: 25px;
+		float: left;
+	}
+
+	#name {
+		margin: 3%;
+		text-align: center;
+		color: darkgoldenrod;
+		font-size: larger;
+	}
+
+	#name1 {
+		margin-right: 3%;
+		margin-top: 3%;
+		text-align: center;
+		color: white;
+		font-size: xx-large;
+	}
+</style>
+<body>
+	<div style="height:50px; width:350px;"></div>
+	<img src="skins/product1.png" style="width:100%; height:250px;" />
+	<p id="name1"><b><i>أسعار الذهب</i></b></p>
+	<hr style="color:gold; height:3px;" />
+
+	<div>
+		<div id="catcard">
+			<p id="name">عيار 21</p>
+			<p id="name">1500 E.P</p>
+		</div>
+		<div id="catcard">
+			<p id="name">عيار 18</p>
+			<p id="name">1500 E.P</p>
+		</div>
+		<div id="catcard">
+			<p id="name">عيار 16</p>
+			<p id="name">1500 E.P</p>
+		</div>
+	</div>
+</body>

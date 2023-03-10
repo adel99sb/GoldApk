@@ -1,0 +1,63 @@
+﻿@page "/gifts"
+@layout HomeLayout
+@inject NavigationManager NavMgr
+@*<head>
+	<script suppress-error="BL9992">
+		function preventBack() { window.history.forward(); }
+		setTimeout("preventBack()", 0);
+		window.onunload = function () { null };</script>
+</head>*@
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	#catcard {
+		border: 8px;
+		width: 46%;
+		margin: 2%;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 25px;
+		float: left;
+	}
+
+	#catcardin {
+		border: 10px;
+		margin: 5%;
+		overflow: hidden;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 20px;
+	}
+
+	#name {
+		margin: 3%;
+		text-align: center;
+		color: darkgoldenrod;
+		font-size: x-large;
+	}
+</style>
+<body>
+	<div style="height:60px; width:350px;"></div>
+	<div>
+		@for (int i = 0; i < 15; i++)
+		{
+			<div id="catcard">
+				<div id="catcardin">
+					<img src="skins/product2.png" />
+				</div>
+				<p id="name">cat @(i + 1)</p>
+			</div>
+		}
+	</div>
+</body>

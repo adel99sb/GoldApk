@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavMgr
+<div style="background-color:black; position: fixed; z-index:1; width:100%;">
+	<p style="color:white; font-size:x-large; float:left; margin-left:40%;">Admin</p>
+	<img src="skins/logo.png" alt="!" style="float:left; margin-left:25%;" />
+</div>
+
+@Body
+<div style="background-color:black; position: fixed; top:90%; width:100%;z-index:1;">
+	<input placeholder="...أدخل رسالتك " style="text-align:right; margin-left:10%;" />
+	<img src="skins/send.png" alt="!" style="background-color:gold; border-radius:25px; border:6px solid;border-color:gold; margin-left:2%;" />
+	<div style="height:60px; width:350px; background-color:black;"></div>
+</div>
+
+
+<style>
+
+	/* Style the tab */
+	.tab {
+		width: 100%;
+		overflow: hidden;
+		border: 3px solid;
+		border-color: darkgoldenrod;
+		position: fixed;
+		z-index: 1;
+	}
+
+		/* Style the buttons inside the tab */
+		.tab button {
+			float: left;
+			cursor: pointer;
+			transition: 0.3s;
+			width: 25%;
+			height: 40px;
+			background-size: contain;
+			background-color: black;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+			/* Change background color of buttons on hover */
+			.tab button:hover {
+				background-color: white;
+			}
+
+</style>
+
+@code {
+	private void t1page()
+	{
+		NavMgr.NavigateTo("");
+	}
+}
+
+@*
+<div>
+    <p style="color:white; font-size:x-large; margin-left:45%; margin-top:5%; float:left;">Admin</p> <img src="skins/ellipse_22.png" style="float:left; margin-left:25%;"/>
+</div>
+<br />
+<hr style="color:gold; height:3px;" />*@

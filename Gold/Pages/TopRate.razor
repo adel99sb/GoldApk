@@ -1,0 +1,65 @@
+﻿@page "/toprate"
+@layout HomeLayout
+@inject NavigationManager NavMgr
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	#catcard {
+		border: 8px;
+		width: 46%;
+		margin: 2%;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 25px;
+		float: left;
+	}
+
+	#catcardin {
+		border: 10px;
+		margin: 5%;
+		overflow: hidden;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 20px;
+		position: relative;
+	}
+
+	#name {
+		color: white;
+		font-size: x-large;
+		position: absolute;
+		left: 35%;
+		top: 40%;
+	}
+</style>
+<body>
+	<div style="height:60px; width:350px;"></div>
+	<div>
+		@for (int i = 1; i < 50; i++)
+		{
+			<div id="catcard">
+				<div id="catcardin">
+					<img src="skins/product1.png" style="opacity:0.7;" />
+					<p id="name">
+						<span style="color:white;">&#9825; </span> @(i * 10)
+					</p>
+				</div>
+			</div>
+		}
+	</div>
+</body>
+@code {
+
+}

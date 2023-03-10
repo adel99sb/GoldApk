@@ -1,0 +1,55 @@
+﻿@page "/size"
+@layout MainLayout
+@inject NavigationManager NavMgr
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+
+	}
+
+	#mybutton {
+		width: 180px;
+		height: 50px;
+		border-radius: 50px;
+		border: 1px groove;
+		border-block-color: white;
+		background-color: darkgoldenrod;
+		color: black;
+		font-size: x-large;
+		font-style: italic;
+		margin-left: 25%;
+	}
+
+
+</style>
+<body>
+<h3 style="font-size:xx-large; color:white;">اختر القياس</h3>
+<div>
+    <input type="range" @bind="@radius" step="10" />
+	<button id="mybutton">تم</button>
+</div>
+<svg height="@(radius*2)" width="@(radius*2)">
+    <circle cx="@radius" cy="@radius" r="@(radius*0.8)" stroke="black" stroke-width="@(radius *0.05)" fill="white" />
+    <text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" fill="black" font-size="@(radius*0.6)px">@radius</text>
+</svg>
+
+@code {
+    int radius {get; set;} = 100;
+}
+	</body>
+@code {
+	private void detailPage()
+	{
+		NavMgr.NavigateTo("/details");
+	}
+}

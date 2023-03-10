@@ -1,0 +1,125 @@
+﻿@page "/AddCompanies/{id:int}"
+@page "/AddCompanies"
+
+
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	input {
+		width: 220px;
+		height: 40px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+		border: 1px solid #ffbe00;
+		background: rgba(0,0,0,1);
+		color:white;
+	}
+
+	#catcard {
+		border: 8px;
+		margin: 2%;
+		border: 1px solid;
+		border-color: gold;
+		border-radius: 25px;
+		float: left;
+	}
+
+	#mybutton {
+		width: 180px;
+		height: 50px;
+		border-radius: 50px;
+		border: 1px groove;
+		border-block-color: white;
+		background-color: darkgoldenrod;
+		color: black;
+		font-size: x-large;
+		font-style: italic;
+		margin-left:20%;
+		margin-top:20px;
+	}
+
+	#name {
+		margin: 3%;
+		text-align: right;
+		color: darkgoldenrod;
+		font-size: larger;
+	}
+</style>
+<body>
+	<div style="height:50px; width:350px;"></div>
+	<p id="name"><b><i>إضافة شركة</i></b></p>
+	<hr style="color:gold; height:3px;" />
+
+	<div style="margin-left:10%;">
+			<p id="name"><b><i>الاسم</i></b></p>
+			<input type="text" @bind-value=company.Name/>
+			<p id="name"><b><i>اختر صورة</i></b></p>
+			@if(!isNew){
+			<InputFile OnChange="@SelectFile" />
+			<img src="@company.Pic.Replace(" ","+")">
+			}
+			else
+			{
+			<InputFile OnChange="@SelectFile" />
+			<img src="@company.Pic">
+			}
+	</div>
+	<button id="mybutton" @*@onclick=AddCompany*@>حفظ</button>
+	</body>
+@code {
+	Services myservice = new Services();
+
+	[Parameter]
+	public int id { set; get; }
+	string mypath;
+	private Company company;
+	private bool isNew = true;
+	private StreamContent fileContent;
+	private string fileName;
+	private string imgUrl;
+	private string imageType;
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		if (id != 0)
+		{
+			company = myservice.GetCompanies().Where(x => x.Id == id).Single();
+			isNew = false;
+		}
+		else
+			company = new();
+	}
+
+	private async Task SelectFile(InputFileChangeEventArgs e)
+	{
+		long maxFileSize = 1024 * 1024 * 10;
+		fileContent = new StreamContent(e.File.OpenReadStream(maxFileSize));
+		fileName = e.File.Name;
+		var fileSize = new byte[e.File.Size];
+		await e.File.OpenReadStream().ReadAsync(fileSize);
+		imageType = e.File.ContentType;
+		// create URL
+		imgUrl = $"data:{imageType};base64,{Convert.ToBase64String(fileSize)}";
+		company.Pic = imgUrl;
+		this.StateHasChanged();
+	}
+	private void AddCompany()
+	{
+		myservice.AddCompany(company);
+	}
+	
+
+}

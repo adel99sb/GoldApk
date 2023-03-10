@@ -1,0 +1,112 @@
+﻿@page "/Companies"
+@using System.Text
+@layout HomeLayout
+@inject NavigationManager NavMgr
+
+<style>
+
+	body {
+		font-family: 'Arabic Typesetting';
+		background: url(skins/background.png) no-repeat center fixed;
+		background-size: contain;
+		background-color: black;
+	}
+
+
+	div {
+		position: page;
+	}
+
+	#catcard {
+		width: 95%;
+		height: 60px;
+		margin-top: 5%;
+		margin-left: 2%;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 25px;
+	}
+
+	#catcardin {
+		margin: 1.3%;
+		width: 50px;
+		height: 50px;
+		overflow: hidden;
+		border: 1px solid;
+		border-color: darkgoldenrod;
+		border-radius: 25px;
+		float:left;
+	}
+
+	#name {
+		margin: 3%;
+		text-align: left;
+		color: darkgoldenrod;
+		font-size: x-large;
+		float: left;
+	}
+
+	#name1 {
+		margin: 3%;
+		text-align: center;
+		color: darkgoldenrod;
+		font-size: x-large;
+		float: right;
+	}
+</style>
+<body>
+	<div style="height:50px; width:350px;"></div>
+	<div>
+@*		@foreach (var COMPAN1 in myservice.GetCompanies())
+*@		
+			@for (int i = 0; i < 10; i++)		
+			{
+			<div id="catcard" @onclick=ToProductsPage>
+				<div id="catcardin">
+@*					@if (COMPAN1.Pic != null)
+*@					{
+@*					<img src="@COMPAN1.Pic.Replace(" ","+")" width="100%" />
+*@					<img src="" width="100%" />
+					}
+@*					else
+*@					{
+					@*<img src="@COMPAN1.Pic" width="100%" />*@
+					<img src="" width="100%" />
+					}
+				</div>
+				@*<p id="name">@COMPAN1.Name</p>*@
+				<p id="name">comapny</p>
+@*				<p id="name1" @onclick="() => ToEdietPage(COMPAN1.Id)">تعديل</p>
+*@				<p id="name1" @onclick="() => ToEdietPage()">تعديل</p>
+					<p id="name1">حذف</p>
+			</div>
+		}		
+		<div id="catcard" @onclick=ToADDPage>
+			<div id="catcardin">
+				<img src="skins/plus.png" width="100%" />
+			</div>
+			<p id="name">إضافة</p>
+		</div>
+	</div>
+</body>
+@code
+{
+	Services myservice = new Services();
+	//public void ToEdietPage(int id)
+	public void ToEdietPage()
+	{
+		//NavMgr.NavigateTo("/AddCompanies/" + id);
+		NavMgr.NavigateTo("/AddCompanies/");
+	} 
+	public void ToADDPage()
+	{
+		NavMgr.NavigateTo("/AddCompanies");
+
+	}
+	public void ToProductsPage()
+	{
+		NavMgr.NavigateTo("/Products");
+
+	}
+
+}
